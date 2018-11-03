@@ -1,6 +1,7 @@
 <h1 align="center">PyJumble: Powered by PyGame</h1>
 <p align="center">A Python Based Word Unscramble Game</p>
-[Start Screen](docs/screens/01-start.png)
+
+![Screenshot](docs/screens/01-start.png)
 
 ## Installation
 
