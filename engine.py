@@ -19,6 +19,10 @@ class Engine:
         else:
             self.seed(DICTIONARY)
 
+        self.pool = []
+        self.picked = []
+        self.matchable = []
+
     def seed(self, path:str):
         """Read Dictionary Text File
         
