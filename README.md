@@ -1,7 +1,8 @@
 <h1 align="center">PyJumble: Powered by PyGame</h1>
-<p align="center">A Python Based Word Unscramble Game</p>
-
-![Screenshot](docs/screens/01-start.png)
+<p align="center">
+    A Python Based Word Unscramble Game<br><br>
+    <img src="docs/screens/00-title.png">
+</p>
 
 
 
@@ -9,14 +10,14 @@
 
 1. Install **PyGame**
 
-   ```bash
+   ```
    pip install pygame
    ```
 
 2. Download the **[latest release](https://github.com/GerardBalaoro/PyJumble/releases)**.
 
 3. Run the main script
-   ```bash
+   ```
    python main.my
    ```
 
@@ -24,7 +25,17 @@
 
 ## Documentation
 
-* [Code Documentation](docs/DOCUMENTATION.md)
+* [Code Documentation](docs/Documentation.md)
+
+
+### Screenshots
+
+<p align="center">
+    <img src="docs/screens/01-start.png">
+    <img src="docs/screens/02-game.png">
+    <img src="docs/screens/03-game.png">
+    <img src="docs/screens/04-over.png">
+</p>
 
 
 
@@ -45,10 +56,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 * Interface Based on Graphic by **[Vecteezy](https://www.vecteezy.com)**
 * [YIPPEE by **Snabisch**](https://opengameart.org/content/yippee)
 * [Happy Tune by **syncopica**](https://opengameart.org/content/happy-tune)
-
 * Other Sounds are Generated using **[Diforb](http://diforb.com)**
-
 * Hearts Icon by **[Smashicons](https://smashicons.com/)** from www.flaticon.com
-
 * Three quarters of an hour Icon by **[Freepik](http://www.freepik.com/)** from www.flaticon.com
-* Game Structure Based on https://github.com/kidscancode/pygame_tutorials
+* The Code Structure as Based on Jumpy Platformer by **[KidsCanCode](http://kidscancode.org/)**

@@ -1,4 +1,4 @@
-"""PyGame Interface Class"""
+"""Game Interface Class"""
 
 import pygame as pg
 import random, math
@@ -45,32 +45,38 @@ class Game:
             'game': AUDIO['game']
         }
 
-    def new(self, engine, lives = 3, time = 60):
+    def new(self, engine, mode):
         """Start a New Game
 
         Arguments:
             engine {Engine}
-            lives {int} : Starting lives, 0 = infinite
-            timer {int} : Time limit in seconds, 0 = infinite
+            mode {dict} : Mode configuration
         
         Returns:
             None
         """     
-        self.engine = engine   
-        self.pool = self.engine.combine(random.sample(engine.dictionary, 3))
-        self.lives = lives if lives != 0 else math.inf
-        self.time = time if time != 0 else math.inf
+        self.engine = engine
+        self.mode = mode
+        self.pool = self.engine.combine(mode['scrambled_words'])
+        self.lives = mode['lives'] if mode['lives'] != 0 else math.inf
+        self.time = mode['time'] if mode['time'] != 0 else math.inf
         self.score = 0
+
+        if mode['exact_match']:
+            engine.search()
+
         self.start_time = pg.time.get_ticks()
         self.current_word = ''
         self.matched_words = []
         self.buttons = pg.sprite.Group()
         self.pool_tiles = pg.sprite.Group()
         self.word_tiles = pg.sprite.Group()
-        self.pool_tiles.empty()        
+        self.pool_tiles.empty()
+
         for i, letter in enumerate(self.pool):
             self.pool_tiles.add(Letter(letter, i + 1, len(self.pool)))
-        self.word_tiles.add(Text('CREATE WORDS USING THE LETTERS PROVIDED ABOVE', 15, COLOR.BROWN, WIDTH / 2, int(HEIGHT * 0.6)))
+
+        self.word_tiles.add(Text(self.mode['instructions'], 15, COLOR.BROWN, WIDTH / 2, int(HEIGHT * 0.6)))
         self.word_tiles.add(Text('PRESS [ ENTER ] TO SUBMIT AND [ ESC ] TO EXIT', 15, COLOR.BROWN, WIDTH / 2, int(HEIGHT * 0.6) + 25))
         self.sounds['start'].play()
         pg.mixer.music.load(self.music['game'])
@@ -100,6 +106,10 @@ class Game:
 
             if self.lives == 0:
                 self.playing = False
+
+            if self.mode['exact_match']:
+                if sorted(self.matched_words) == sorted(self.engine.matchable):
+                    self.playing = False
 
             self.clock.tick(FPS)
             self.screen.blit(self.background, (0,0))
@@ -141,6 +151,8 @@ class Game:
                     if self.current_word.count(letter) < self.pool.count(letter):
                         self.sounds['click'].play()
                         self.current_word += letter
+                    else:
+                        self.sounds['fail'].play()
                 elif event.key == pg.K_BACKSPACE:  
                     self.sounds['enter'].play()                  
                     self.current_word = self.current_word[0:-1]
@@ -148,11 +160,18 @@ class Game:
                     if len(self.current_word) > 0:
                         self.sounds['enter'].play()                        
                         if self.current_word not in self.matched_words:
-                            if self.engine.check(self.current_word):
+                            if self.mode['exact_match']:
+                                if self.current_word in self.engine.matchable:
+                                    check = True
+                                else:
+                                    check = False
+                            else:
+                                check = self.engine.check(self.current_word)
+                            if check:
                                 self.sounds['success'].play()
                                 score = self.engine.score(self.current_word)
                                 self.score += score
-                                self.matched_words += self.current_word
+                                self.matched_words.append(self.current_word)
                                 self.word_tiles.add(Button("NICE! THAT'S " + str(score) + " POINT" + ('S' if score > 1 else '') + " FOR YOU", WIDTH / 2, int(HEIGHT * 0.6), size=15, color=COLOR.GREEN))
                             else:
                                 self.sounds['fail'].play()
@@ -165,16 +184,18 @@ class Game:
                             self.word_tiles.add(Button("NOPE! YOU TRIED THAT ALREADY", WIDTH / 2, int(HEIGHT * 0.6), size=15, color=COLOR.ORANGE))
 
                         self.current_word = ''
-                    else:
-                        self.word_tiles.add(Text('CREATE WORDS USING THE LETTERS PROVIDED ABOVE', 15, COLOR.BROWN, WIDTH / 2, int(HEIGHT * 0.6)))
-                        self.word_tiles.add(Text('PRESS [ ENTER ] TO SUBMIT AND [ ESC ] TO EXIT', 15, COLOR.BROWN, WIDTH / 2, int(HEIGHT * 0.6) + 25))
                 elif event.key == pg.K_ESCAPE:
                     self.sounds['enter'].play()
                     self.playing = False
+                else:
+                    self.sounds['fail'].play()
                 
                 if len(self.current_word) > 0:
                     for i, letter in enumerate(self.current_word):
                         self.word_tiles.add(Letter(letter, i + 1, len(self.current_word), margin=int((HEIGHT - 20) / 2 + 50)))
+                elif len(self.word_tiles.sprites()) == 0:
+                    self.word_tiles.add(Text(self.mode['instructions'], 15, COLOR.BROWN, WIDTH / 2, int(HEIGHT * 0.6)))
+                    self.word_tiles.add(Text('PRESS [ ENTER ] TO SUBMIT AND [ ESC ] TO EXIT', 15, COLOR.BROWN, WIDTH / 2, int(HEIGHT * 0.6) + 25))
                 
     def draw(self):
         """Draw Game Elements
@@ -273,4 +294,3 @@ class Game:
                         self.sounds['enter'].play()
                         waiting = False
                         return pg.key.name(event.key)
-                    

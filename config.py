@@ -6,52 +6,77 @@
 TITLE = 'PyJumble'
 WIDTH = 900
 HEIGHT = 600
-FPS = 60
+FPS = 100
 BACKGROUND = 'assets/images/background.png'
 ICON = 'assets/images/icon.png'
 
-#: ====================================
-#: DEFAULT DICTIONARY PATH
-#: ====================================
+#: ==============================================
+#: DEFAULTS
+#: ==============================================
 DICTIONARY = 'assets/source/dictionary.txt'
+LIVES = 3
+TIME = 60
+SCRAMBLED_WORDS = 3
+INSTRUCTIONS = 'CREATE WORDS USING THE LETTERS PROVIDED ABOVE'
 
-#: ====================================
+#: ==============================================
 #: STRICT MODE
-#: ------------------------------------
-#: Deduct points on duplicate inputs
-#: ====================================
+#: ----------------------------------------------
+#: Deduct points on duplicate entries
+#: ==============================================
 STRICT = True
 
-#: ====================================
+#: ==============================================
 #: GAME MODES
-#: ------------------------------------
-#: Lives/Time: 0 = Infinite
-#: Key: Selection Key on Start Screen
-#: ====================================
+#: ----------------------------------------------
+#: lives/time: 0 = Infinite
+#: key: Selection Key on Start Screen
+#: exact_match: Entries must use all the letters from the anagram
+#: scrambled_words: Number of words from the dictionary to scramble
+#: instructions: Instructions
+#: ==============================================
 MODES = [
     {
-        'name': 'BASIC',
-        'key': 'b',
-        'lives': 3,
-        'time': 0
+        'name': 'CASUAL',
+        'key': 'c',
+        'lives': LIVES,
+        'time': 0,
+        'exact_match': False,
+        'scrambled_words': SCRAMBLED_WORDS,
+        'instructions': INSTRUCTIONS
     },
     {
         'name': 'TIMED',
         'key': 't',
         'lives': 0,
-        'time': 60
+        'time': TIME,
+        'exact_match': False,
+        'scrambled_words': SCRAMBLED_WORDS,
+        'instructions': INSTRUCTIONS
     },
     {
-        'name': 'ULTRA',
-        'key': 'u',
-        'lives': 3,
-        'time': 60
+        'name': 'HYPER',
+        'key': 'h',
+        'lives': LIVES,
+        'time': TIME,
+        'exact_match': False,
+        'scrambled_words': SCRAMBLED_WORDS,
+        'instructions': INSTRUCTIONS
+    },
+    {
+        'name': 'ANAGRAM FINDER',
+        'key': 'a',
+        'lives': LIVES,
+        'time': 0,
+        'exact_match': True,
+        'scrambled_words': 1,
+        'instructions': 'FIND WORDS THAT USES THE EXACT LETTERS ABOVE'
     }
 ]
 
-#: ====================================
+#: ==============================================
 #: AUDIO FILES
-#: ====================================
+#: ==============================================
 AUDIO = {
     'enter': 'assets/audio/swap.wav',
     'click': 'assets/audio/swap.wav',
@@ -63,9 +88,9 @@ AUDIO = {
     'game': 'assets/audio/happytune.wav',
 }
 
-#: ====================================
+#: ==============================================
 #: CREDITS
-#: ====================================
+#: ==============================================
 CREDITS = [
     "Copyright (c) 2018 Gerard Balaoro",
     "This Work is under the MIT License",

@@ -1,6 +1,7 @@
 """Core Game Engine"""
 
 from config import DICTIONARY
+from random import sample, shuffle
 
 class Engine:
     def __init__(self, path = ''):
@@ -30,68 +31,96 @@ class Engine:
         dict_file = open(path, 'r')
         self.dictionary = tuple([w.strip() for w in dict_file.readlines()])
 
-    def pick(self, indices:list):
+    def pick(self, number:int = 3, indices:list = []):
         """Get List of Words from Dictionary
         
         Arguments:
-            indices {list} : List of indices {int}
-        
+            number {int} : Number of Items
+            indices {list} : List of Indices
+
         Returns:
             {list} : List of words
         """
-        words = []
-        for i in indices:
-            if i < len(self.dictionary):
-                words.append(self.dictionary[int(i)])
-        return words
-
-
-    def search(self, anagram:str):
-        """Find Words from Dictionary Using an Anagram
+        if len(indices):
+            self.picked = []
         
+            for i in indices:
+                self.picked.append(self.dictionary[i])
+        else:
+            self.picked = sample(self.dictionary, number)
+
+        return self.picked
+
+    def search(self, source = ''):
+        """Find Anagrams from Dictionary
+
         Arguments:
-            anagram {str}
+            source {str|list} : Characters to user
         
         Returns:
             {list} : List of words 
         """
-        matches = []
-        for word in self.dictionary:
-            if sorted(word) == sorted(pattern):
-                matches.append(word)
-        return matches
+        matchable = []
 
-    def combine(self, words:list):
-        """Create a Letter Pool from Words
+        if len(source):
+            pool = source
+        else:
+            pool = self.pool
+            self.matchable = matchable
+
+        for word in self.dictionary:
+            if sorted(word) == sorted(pool):
+                matchable.append(word)
+
+        return matchable
+
+    def combine(self, number:int = 3, words:list = []):
+        """Create a Scrambled Character Pool
+
+        Automatically calls pick() method
         
         Arguments:
-            words {list}
+            number {int} : Number of Items to Pick
+            words {int} : List of Words
 
         Returns:
             {list} : Letter pool
         """
-        self.pool = []
-        for word in words:
+        pool = []
+
+        if len(words):
+            picked = words
+        else:
+            picked = self.pick(number)
+            self.matchable = []
+            self.pool = pool
+
+        for word in picked:
             word = list(word)
-            for char in self.pool:
+            for char in pool:
                 if char in word:
                     word.remove(char)
-            self.pool += word
-        return self.pool
+            pool += word
+        shuffle(pool)
 
-    def check(self, word:str):
-        """Check if a Word from a Dictionary can be formed
-        using the Letters from a Pool
+        return pool
+
+    def check(self, word:str, pool = []):
+        """Check if Word can be formed from Pool and exists in the Dictionary
         
         Arguments:
             word {str} : Word to check
+            pool {list} : List of characters
         
         Returns:
             {bool}
         """
+        if len(pool) == 0:
+            pool = self.pool
+
         if word in self.dictionary:
             for char in set(word):
-                if list(word).count(char) > self.pool.count(char):
+                if list(word).count(char) > pool.count(char):
                     return False
                     break
             return True

@@ -1,4 +1,4 @@
-"""Collection of Sprite Classes"""
+"""Sprite Classes"""
 
 import pygame as pg, math
 from config import *
