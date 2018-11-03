@@ -1,4 +1,4 @@
-"""PyGame Interface Methods"""
+"""PyGame Interface Class"""
 
 import pygame as pg
 import random, math
@@ -207,17 +207,18 @@ class Game:
         self.buttons.draw(self.screen)        
         pg.display.flip()
         selected = self.wait_input(list(ord(mode['key']) for mode in MODES) + [pg.K_i])
-        if selected == 'i':
-            self.credits()
-            self.start_screen()
-        else:
-            for mode in MODES:
-                if mode['key'] == selected:
-                    pg.mixer.music.fadeout(500)
-                    return mode
-        return None
+        for mode in MODES:
+            if mode['key'] == selected:
+                pg.mixer.music.fadeout(500)
+                return mode
+        return selected
 
     def credits(self):
+        """Show Credits Screen
+
+        Returns:
+            None
+        """
         self.screen.blit(self.background, (0,0))
         self.buttons = pg.sprite.Group()
         for i, letter in enumerate(TITLE):            
@@ -253,9 +254,12 @@ class Game:
         """Wait for User Input
 
         Used for Static Screens (Start Menu, Game Over, etc)
+
+        Arguments:
+            accepted {list}: List of accepted keys
         
         Returns:
-            None
+            {str}: Key name, none
         """
         waiting = True
         while waiting and self.running:

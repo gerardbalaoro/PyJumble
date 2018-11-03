@@ -15,7 +15,11 @@ while instance.running:
     # Show Start Screen
     mode = instance.start_screen()
 
-    if mode != None:
+    if mode == 'i':
+        # Show Credits Screen
+        instance.credits()
+        continue
+    else:
         # New Game, Pass Engine Instance
         instance.new(ENGINE, mode['lives'], mode['time'])
 

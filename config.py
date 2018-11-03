@@ -51,8 +51,6 @@ MODES = [
 
 #: ====================================
 #: AUDIO FILES
-#: ------------------------------------
-#: Files should be inside assets/audio
 #: ====================================
 AUDIO = {
     'enter': 'assets/audio/swap.wav',

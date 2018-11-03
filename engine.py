@@ -35,7 +35,6 @@ class Engine:
         
         Arguments:
             indices {list} : List of indices {int}
-            dictionary {tuple}
         
         Returns:
             {list} : List of words
@@ -52,7 +51,6 @@ class Engine:
         
         Arguments:
             anagram {str}
-            dictionary {tuple}
         
         Returns:
             {list} : List of words 
@@ -87,8 +85,6 @@ class Engine:
         
         Arguments:
             word {str} : Word to check
-            pool {list} : Letter pool
-            dictionary {tuple}
         
         Returns:
             {bool}
