@@ -1,4 +1,24 @@
-# Documentation
+<h1 align="center">PyJumble: Powered by PyGame</h1>
+<p align="center">A Python Based Word Unscramble Game</p>
+
+![Title](screens/00-title.png)
+
+----
+<p align="center">
+Developed by <b>Gerard Ian M. Balaoro</b><br>
+In Partial Fulfillment on the Requirements for the Subject<br>
+Computer Science 11<br>
+1st Semester, A.Y. 2018-2019<br>
+University of the Philippines Diliman
+</p>
+----
+
+
+
+
+<h1 align="center">Code Documentation</h1>
+
+
 
 ## File Structure
 
@@ -351,3 +371,21 @@ AUDIO = {
 }
 ```
 
+## Running the Game
+
+```bash
+python main.py
+```
+
+
+
+
+<h1 align="center">Credits</h1>
+
+- Interface Based on Graphic by Vecteezy
+- YIPPEE by Snabisch
+- Happy Tune by syncopica
+- Other Sounds are Generated using Diforb
+- Hearts Icon by Smashicons from www.flaticon.com
+- Three quarters of an hour Icon by Freepik from www.flaticon.com
+- Game Structure Based on https://github.com/kidscancode/pygame_tutorials
