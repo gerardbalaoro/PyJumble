@@ -1,19 +1,13 @@
 <h1 align="center">PyJumble: Powered by PyGame</h1>
-<p align="center">A Python Based Word Unscramble Game</p>
-
+<p align="center">
+    A Python Based Word Unscramble Game<br>
+    Developed by <b>Gerard Ian M. Balaoro
+</p>
 <p align="center">
     <img src="screens/00-title.png">
 </p>
+<hr>
 
-<hr>
-<p align="center">
-Developed by <b>Gerard Ian M. Balaoro</b><br>
-In Partial Fulfillment on the Requirements for the Subject<br>
-Computer Science 11<br>
-1st Semester, A.Y. 2018-2019<br>
-University of the Philippines Diliman
-</p>
-<hr>
 
 
 
@@ -25,7 +19,7 @@ University of the Philippines Diliman
 
 The execution process of application is contained in **main.py**.
 
-1. External modules and the **[PyGame Library](https://www.pygame.org)** library are loaded first.
+1. External modules and the **[PyGame](https://www.pygame.org)** package are imported first.
 
    ```python
    from config import *
@@ -91,6 +85,7 @@ The source files of the application are arranged according to the diagram below.
 ├── engine.py # Game Logic Engine Class
 ├── interface.py # PyGame Interface Class and Methods
 ├── main.py # Main / Entry Script
+├── setup.py # Distutils Setup Script
 ├── sprites.py # Sprites / Game Object Classes
 └── ...
 ```
@@ -476,9 +471,42 @@ STRICT = True
 
 ## Running the Game
 
-```bash
+This application requires the **[PyGame](https://www.pygame.org)** package. Install it by using **pip** by running the command:
+```
+pip install pygame
+```
+> See their [documentation](https://www.pygame.org/wiki/GettingStarted) for information on installing the package without **pip**.
+
+Run the main script.
+```
 python main.py
 ```
+> **Note**: This version of the program has only been tested in Python 3.4 to 3.7
+
+
+
+## Building Distributables
+
+The **[cx_Freeze](https://anthony-tuininga.github.io/cx_Freeze/)** package is used to compile executable binaries and create installers.
+Currently, only Windows distributables are supported. The package uses Python 3.6 binaries during build, as such **Python 3.6 is required**. Problems were encountered during install or build when using other Python versions.
+
+The build configuration is defined in **setup.py**. For more information, read **[cx_Freeze documentation](https://cx-freeze.readthedocs.io/en/latest/distutils.html)**.
+
+Install **[cx_Freeze](https://anthony-tuininga.github.io/cx_Freeze/)** using **pip** by running the command:
+```
+py -3.6 -m pip install cx_Freeze
+```
+
+Build Windows Binaries (32-bit)
+```
+py -3.6 setup.py build
+```
+
+Build Windows Installer (MSI)
+```
+py -3.6 setup.py bdist_msi
+```
+
 
 
 

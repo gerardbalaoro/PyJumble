@@ -8,19 +8,20 @@
 
 ## Installation
 
-1. Install **PyGame**
+* Download the **[latest release](https://github.com/GerardBalaoro/PyJumble/releases)**
 
+### Running From Source
+
+1. Install **[PyGame](https://www.pygame.org/)**
    ```
    pip install pygame
    ```
 
-2. Download the **[latest release](https://github.com/GerardBalaoro/PyJumble/releases)**.
-
-3. Run the main script
+2. Run the main script
    ```
-   python main.my
+   python main.py
    ```
-
+   > **Note**: This version of the program has only been tested in Python 3.4 to 3.7
 
 
 ## Documentation
@@ -28,13 +29,13 @@
 * [Code Documentation](docs/Documentation.md)
 
 
-### Screenshots
+## Screenshots
 
 <p align="center">
-    <img src="docs/screens/01-start.png">
-    <img src="docs/screens/02-game.png">
-    <img src="docs/screens/03-game.png">
-    <img src="docs/screens/04-over.png">
+    <img width="50%" src="docs/screens/01-start.png">
+    <img width="50%" src="docs/screens/02-game.png">
+    <img width="50%" src="docs/screens/03-game.png">
+    <img width="50%" src="docs/screens/04-over.png">
 </p>
 
 

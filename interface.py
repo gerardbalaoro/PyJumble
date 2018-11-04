@@ -58,8 +58,8 @@ class Game:
         self.engine = engine
         self.mode = mode
         self.pool = self.engine.combine(mode['scrambled_words'])
-        self.lives = mode['lives'] if mode['lives'] != 0 else math.inf
-        self.time = mode['time'] if mode['time'] != 0 else math.inf
+        self.lives = mode['lives'] if mode['lives'] != 0 else float('inf')
+        self.time = mode['time'] if mode['time'] != 0 else float('inf')
         self.score = 0
 
         if mode['exact_match']:
@@ -92,7 +92,7 @@ class Game:
         self.playing = True  
         while self.playing:
             time_color = COLOR.BROWN
-            if self.time != math.inf:
+            if self.time != float('inf'):
                 time_elapsed = int((pg.time.get_ticks() - self.start_time) / 1000)
                 time_left = self.time - time_elapsed
                 if time_left == 0:
@@ -102,7 +102,7 @@ class Game:
             else:
                 time_left = '--'
             
-            lives_left = '--' if self.lives == math.inf else self.lives
+            lives_left = '--' if self.lives == float('inf') else self.lives
 
             if self.lives == 0:
                 self.playing = False
