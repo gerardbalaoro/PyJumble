@@ -265,11 +265,11 @@ class Game:
         for i, letter in enumerate('GAMEOVER'):
            self.buttons.add(Letter(letter, i + 1, 8, margin=100))
         self.buttons.add(Button('SCORE : ' + str(self.score), int(WIDTH * 0.5), HEIGHT / 2))
-        self.buttons.add(Text('PRESS ANY KEY TO CONTINUE', 13, COLOR.BROWN, WIDTH / 2, (HEIGHT / 2) + 100))
+        self.buttons.add(Text('PRESS [ SPACE ] TO CONTINUE', 13, COLOR.BROWN, WIDTH / 2, (HEIGHT / 2) + 100))
         self.buttons.draw(self.screen)
         self.sounds['end'].play()
         pg.display.flip()
-        self.wait_input()
+        self.wait_input([pg.K_SPACE])
 
     def wait_input(self, accepted = []):
         """Wait for User Input
