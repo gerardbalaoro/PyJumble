@@ -55,9 +55,9 @@ cx_Freeze.setup(
     url     = 'https://github.com/GerardBalaoro/PyJumble',
     options = {
         'build_exe': {
-            'packages': ['pygame', 'random', 'math'],
+            'packages': ['pygame', 'random', 'math', 'os', 'json'],
             'includes': ['config', 'engine', 'sprites', 'interface'],
-            'include_files': ['assets/', 'LICENSE.md', 'README.md'],
+            'include_files': ['assets/', 'LICENSE.md', 'README.md', 'config.json'],
         },
         'bdist_msi': {
             'data': {

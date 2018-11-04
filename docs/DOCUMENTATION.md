@@ -81,6 +81,7 @@ The source files of the application are arranged according to the diagram below.
 │ ├── fonts # Font Files (*.ttf)
 │ ├── images # Images (*.png)
 │ └── source # Dictionary Files (.*txt)
+├── config.json # User Configuration
 ├── config.py # Application Configuration
 ├── engine.py # Game Logic Engine Class
 ├── interface.py # PyGame Interface Class and Methods
@@ -385,6 +386,29 @@ Calculates the Score of a Word using Scrabble Points
 
 All constants and other objects that are used throughout the application are defined at the **config.py**. This file is imported in all of the scripts that constitute the program.
 
+### User Settings
+
+The **config.json**, if exists, overrides some values defined in **config.py**.
+
+```json
+{
+    "dictionary" : "assets/source/dictionary.txt",
+    "strict"     : true
+}
+```
+
+At the beginning of **config.py**, the module attempts to load **config.json** values.
+
+```python
+#: ====================================
+#: LOAD CONFIG.JSON VALUES
+#: ====================================
+if os.path.exists('config.json'):
+    user = json.loads(open('config.json', 'r').read())
+else:
+    user = {}
+```
+
 ### Interface Settings
 
 ```python
@@ -405,7 +429,7 @@ ICON = 'assets/images/icon.png'                # Window Icon
 #: ==============================================
 #: DEFAULTS
 #: ==============================================
-DICTIONARY = 'assets/source/dictionary.txt'
+DICTIONARY = user.get('dictionary', 'assets/source/dictionary.txt')
 #: Used in Game Modes
 LIVES = 3
 TIME = 60
@@ -464,7 +488,7 @@ AUDIO = {
 #: ------------------------------------
 #: Deduct points on duplicate entries
 #: ====================================
-STRICT = True
+STRICT = user.get('strict', True)
 ```
 
 

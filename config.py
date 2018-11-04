@@ -1,5 +1,15 @@
 """Application Configuration"""
 
+import json, os.path
+
+#: ====================================
+#: LOAD CONFIG.JSON VALUES
+#: ====================================
+if os.path.exists('config.json'):
+    user = json.loads(open('config.json', 'r').read())
+else:
+    user = {}
+
 #: ====================================
 #: INTERFACE
 #: ====================================
@@ -13,7 +23,7 @@ ICON = 'assets/images/icon.png'
 #: ==============================================
 #: DEFAULTS
 #: ==============================================
-DICTIONARY = 'assets/source/dictionary.txt'
+DICTIONARY = user.get('dictionary', 'assets/source/dictionary.txt')
 LIVES = 3
 TIME = 60
 SCRAMBLED_WORDS = 3
@@ -22,9 +32,9 @@ INSTRUCTIONS = 'CREATE WORDS USING THE LETTERS PROVIDED ABOVE'
 #: ==============================================
 #: STRICT MODE
 #: ----------------------------------------------
-#: Deduct points on duplicate entries
+#: (Bool) Deduct points on duplicate entries
 #: ==============================================
-STRICT = True
+STRICT = user.get('strict', True)
 
 #: ==============================================
 #: GAME MODES

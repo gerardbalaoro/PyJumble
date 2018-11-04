@@ -57,8 +57,7 @@ Downloading the source code gives you freedom to configure the game. If you opte
    - Used as primary source on Scrabble tournaments in the United States, Canada, and Thailand
    - Retrieved from [Word Game Dictionary](https://www.wordgamedictionary.com/twl06/)
 
-> The Dictionary File can be configured in the Application Settings : **([config.py](config.py))**.
-> Packaged distributions use the default dictionary source.
+> The Dictionary File can be configured in **([config.json](config.json))**.
 
 
 
