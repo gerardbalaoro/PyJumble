@@ -9,8 +9,11 @@
 ## Installation
 
 * Download the **[latest release](https://github.com/GerardBalaoro/PyJumble/releases)**
+* Unpack the **zip file** or run the installer if you downloaded packaged binaries for your Operating System
 
 ### Running From Source
+
+Downloading the source code gives you freedom to configure the game. If you opted to do so, run the application through the following steps:
 
 1. Install **[PyGame](https://www.pygame.org/)**
    ```
@@ -22,6 +25,41 @@
    python main.py
    ```
    > **Note**: This version of the program has only been tested in Python 3.4 to 3.7
+
+
+
+## Game Play
+
+* **Casual** 
+   - The player has 3 lives and must guess as much valid word to earn points.
+   - Invalid words and duplicate answers will deduct 1 life from the player.
+* **Timed**
+   - The player must guess as much valid word to earn points within 60 seconds.
+* **Hyper**
+   - A combination of casual and timed mode.
+* **Anagram Finder**
+   - The player must find all the anagrams from a selection of characters.
+
+
+
+## Dictionaries
+
+* **Dictionary**
+   - Default dictionary file
+* **Enable**
+   - The official word list for Words With Friends
+   - Retrieved from [Word Game Dictionary](https://www.wordgamedictionary.com/enable/)
+* **SOWPODS**
+   - The word list used in Scrabble tournaments in English speaking countries except United States, Canada, Thailand and Israel
+   - Retrieved from [Word Game Dictionary](https://www.wordgamedictionary.com/SOWPODS/)
+* **TWL06**
+   - Official Tournament and Club Word List
+   - Used as primary source on Scrabble tournaments in the United States, Canada, and Thailand
+   - Retrieved from [Word Game Dictionary](https://www.wordgamedictionary.com/twl06/)
+
+> The Dictionary File can be configured in the Application Settings : **([config.py](config.py))**.
+> Packaged distributions use the default dictionary source.
+
 
 
 ## Documentation
