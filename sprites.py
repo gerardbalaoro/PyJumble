@@ -21,9 +21,9 @@ class Letter(pg.sprite.Sprite):
             for i in range(line_total):
                 size = round(size * (0.90))      
 
-        self.letter = letter
+        self.letter = letter.lower()
         self.button = button
-        self.image = pg.image.load("assets/images/letter_" + letter + ".png").convert_alpha()
+        self.image = pg.image.load("assets/images/letter_" + self.letter + ".png").convert_alpha()
         self.rect = self.image.get_rect()
         self.rect.y = margin + (size * (line - 1))      
         self.rect.x = ((WIDTH / 2) - (size * line_length / 2)) + (line_position * size)
