@@ -1,7 +1,7 @@
 <h1 align="center">PyJumble: Powered by PyGame</h1>
 <p align="center">
     A Python Based Word Unscramble Game<br>
-    Developed by <b>Gerard Ian M. Balaoro
+    Developed by <b>Gerard Ian M. Balaoro</b>
 </p>
 <p align="center">
     <img src="screens/00-title.png">
