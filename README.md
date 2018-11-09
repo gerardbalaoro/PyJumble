@@ -1,7 +1,7 @@
 <h1 align="center">PyJumble: Powered by PyGame</h1>
 <p align="center">
     A Python Based Word Unscramble Game<br><br>
-    <img src="docs/screens/00-title.png">
+    <img src="screens/00-title.png">
 </p>
 
 
@@ -63,16 +63,16 @@ Downloading the source code gives you freedom to configure the game. If you opte
 
 ## Documentation
 
-* [Code Documentation](docs/Documentation.md)
+* [Code Documentation](Documentation.md)
 
 
 ## Screenshots
 
 <p align="center">
-    <img width="50%" src="docs/screens/01-start.png">
-    <img width="50%" src="docs/screens/02-game.png">
-    <img width="50%" src="docs/screens/03-game.png">
-    <img width="50%" src="docs/screens/04-over.png">
+    <img width="50%" src="screens/01-start.png">
+    <img width="50%" src="screens/02-game.png">
+    <img width="50%" src="screens/03-game.png">
+    <img width="50%" src="screens/04-over.png">
 </p>
 
 

@@ -4,7 +4,7 @@
     Developed by <b>Gerard Ian M. Balaoro</b>
 </p>
 <p align="center">
-    <img src="screens/00-title.png">
+    <img src="00-title.png">
 </p>
 <hr>
 
